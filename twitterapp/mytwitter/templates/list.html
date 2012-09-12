@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href="/clear">Sign out</a>
+<table style="width:480; overflow:auto" cellspacing="0" border="0">
+  <tbody>
+    <tr>
+      <td>
+	      <img src="{{user.profile_image_url}}"/>
+      </td>
+      <td style="width:500px"><a href="http://twitter.com/{{user.screen_name}}" target="True">{{user.name}}</a>, {%if user.location%} {{user.location}}, {%endif%} Followers: {{user.followers_count}}, Following: {{user.friends_count}},
+      Tweets: {{user.statuses_count}}
+      </td>
+    </tr>
+  </tbody>
+</table>
+</br>
+<h2>TWEETS</h2>
+{% for tweet in tweets%}
+<table style="width:480; overflow:auto" cellspacing="0" border="2">
+  <tbody>
+      <tr>
+        <td>
+          <img src="{{tweet.user.profile_image_url}}"/>
+        </td>
+        <td style="width:500px"><font size="2"><a href="http://twitter.com/{{tweet.user.screen_name}}" target="True">{{tweet.user.name}}</a>, Followers: {{tweet.user.followers_count}}, Following: {{user.friends_count}}</br>{{tweet.text}}</font> 
+        </td>
+      </tr>
+  </tbody>
+</table>
+</br>
+{%endfor%}
+{% endblock %}
